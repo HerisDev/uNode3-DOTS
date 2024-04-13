@@ -92,21 +92,21 @@ namespace MaxyGames.UNode {
 			if(IsISystem) {
 				onCreate = CG.generatorData.AddMethod(
 					nameof(ISystem.OnCreate),
-					CG.Type(typeof(void)),
+					typeof(void),
 					new[] {
 					new CG.MPData(parameterName, typeof(SystemState), RefKind.Ref)
 					}
 				).SetToPublic();
 				onUpdate = CG.generatorData.AddMethod(
 					nameof(ISystem.OnUpdate),
-					CG.Type(typeof(void)),
+					typeof(void),
 					new[] {
 					new CG.MPData(parameterName, typeof(SystemState), RefKind.Ref)
 					}
 				).SetToPublic();
 				onDestroy = CG.generatorData.AddMethod(
 					nameof(ISystem.OnDestroy),
-					CG.Type(typeof(void)),
+					typeof(void),
 					new[] {
 					new CG.MPData(parameterName, typeof(SystemState), RefKind.Ref)
 					}
@@ -117,14 +117,14 @@ namespace MaxyGames.UNode {
 					});
 					CG.generatorData.AddMethod(
 						nameof(ISystemStartStop.OnStartRunning),
-						CG.Type(typeof(void)),
+						typeof(void),
 						new[] {
 						new CG.MPData(parameterName, typeof(SystemState), RefKind.Ref)
 						}
 					).SetToPublic();
 					CG.generatorData.AddMethod(
 						nameof(ISystemStartStop.OnStopRunning),
-						CG.Type(typeof(void)),
+						typeof(void),
 						new[] {
 						new CG.MPData(parameterName, typeof(SystemState), RefKind.Ref)
 						}
@@ -134,21 +134,21 @@ namespace MaxyGames.UNode {
 			else {
 				onCreate = CG.generatorData.AddMethod(
 					nameof(ISystem.OnCreate),
-					CG.Type(typeof(void))
+					typeof(void)
 				);
 				onCreate.modifier = new FunctionModifier();
 				onCreate.modifier.SetProtected();
 				onCreate.modifier.SetOverride();
 				onUpdate = CG.generatorData.AddMethod(
 					nameof(ISystem.OnUpdate),
-					CG.Type(typeof(void))
+					typeof(void)
 				);
 				onUpdate.modifier = new FunctionModifier();
 				onUpdate.modifier.SetProtected();
 				onUpdate.modifier.SetOverride();
 				onDestroy = CG.generatorData.AddMethod(
 					nameof(ISystem.OnDestroy),
-					CG.Type(typeof(void))
+					typeof(void)
 				);
 				onDestroy.modifier = new FunctionModifier();
 				onDestroy.modifier.SetProtected();
@@ -156,8 +156,7 @@ namespace MaxyGames.UNode {
 				if(GraphData.mainGraphContainer.Any(element => element is NodeObject node && node.node is Nodes.OnSystemStartRunning)) {
 					var mData = CG.generatorData.AddMethod(
 						nameof(ISystemStartStop.OnStartRunning),
-						CG.Type(typeof(void)),
-						new string[0]
+						typeof(void)
 					);
 					mData.modifier = new FunctionModifier();
 					mData.modifier.SetProtected();
@@ -166,8 +165,7 @@ namespace MaxyGames.UNode {
 				if(GraphData.mainGraphContainer.Any(element => element is NodeObject node && node.node is Nodes.OnSystemStopRunning)) {
 					var mData = CG.generatorData.AddMethod(
 						nameof(ISystemStartStop.OnStopRunning),
-						CG.Type(typeof(void)),
-						new string[0]
+						typeof(void)
 					);
 					mData.modifier = new FunctionModifier();
 					mData.modifier.SetProtected();

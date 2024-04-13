@@ -142,7 +142,7 @@ namespace MaxyGames.UNode.Nodes {
 				}
 
 				//Create execute method
-				var method = new CG.MData(nameof(IJobChunk.Execute), CG.Type(typeof(void))) {
+				var method = new CG.MData(nameof(IJobChunk.Execute), typeof(void)) {
 					modifier = new FunctionModifier(),
 				};
 				List<CG.MPData> parameters = new List<CG.MPData>();
@@ -170,13 +170,13 @@ namespace MaxyGames.UNode.Nodes {
 					var data = datas[i];
 					switch(data.kind) {
 						case DataKind.ReadOnly:
-							parameters.Add(new CG.MPData(variableNames[i], CG.Type(data.type), RefKind.In));
+							parameters.Add(new CG.MPData(variableNames[i], data.type, RefKind.In));
 							break;
 						case DataKind.ReadWrite:
-							parameters.Add(new CG.MPData(variableNames[i], CG.Type(data.type), RefKind.Ref));
+							parameters.Add(new CG.MPData(variableNames[i], data.type, RefKind.Ref));
 							break;
 						case DataKind.None:
-							parameters.Add(new CG.MPData(variableNames[i], CG.Type(data.type)));
+							parameters.Add(new CG.MPData(variableNames[i], data.type));
 							break;
 					}
 				}

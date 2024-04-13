@@ -84,14 +84,14 @@ namespace MaxyGames.UNode.Nodes {
 				}
 
 				//Create execute method
-				var method = new CG.MData(nameof(IJobChunk.Execute), CG.Type(typeof(void))) {
+				var method = new CG.MData(nameof(IJobChunk.Execute), typeof(void)) {
 					modifier = new FunctionModifier(),
 				};
 				List<CG.MPData> parameters = new List<CG.MPData> {
-					new CG.MPData(chunkCode, CG.Type(typeof(ArchetypeChunk)), RefKind.In),
-					new CG.MPData(unfilteredChunkIndexCode, CG.Type(typeof(int))),
-					new CG.MPData(useEnabledMaskCode, CG.Type(typeof(bool))),
-					new CG.MPData(chunkEnabledMaskCode, CG.Type(typeof(v128)), RefKind.In)
+					new CG.MPData(chunkCode, typeof(ArchetypeChunk), RefKind.In),
+					new CG.MPData(unfilteredChunkIndexCode, typeof(int)),
+					new CG.MPData(useEnabledMaskCode, typeof(bool)),
+					new CG.MPData(chunkEnabledMaskCode, typeof(v128), RefKind.In)
 				};
 				method.parameters = parameters;
 				//Generate code for execute logic
