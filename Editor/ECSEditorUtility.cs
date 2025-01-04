@@ -52,13 +52,17 @@ namespace MaxyGames.UNode.Editors {
 						});
 
 						NodeEditorUtility.AddNewNode(function, Vector2.zero, (NodeBaseCaller addComponent) => {
-							addComponent.target = MemberData.CreateFromMember(typeof(IBaker).GetMethod(
-								nameof(IBaker.AddComponent),
-								1,
-								new[]{
-									typeof(Entity),
-									Type.MakeGenericMethodParameter(0).MakeByRefType() }
-								).MakeRuntimeGenericMethod(componentType));
+							addComponent.target = MemberData.CreateFromMember(
+								ReflectionUtils.MakeGenericMethod(
+									typeof(IBaker).GetMethod(
+										nameof(IBaker.AddComponent),
+										1,
+										new[]{
+											typeof(Entity),
+											Type.MakeGenericMethodParameter(0).MakeByRefType() }
+										), 
+									componentType)
+								);
 							addComponent.parameters[0].input.ConnectToAsProxy(entity.output);
 
 							entity.exit.ConnectTo(addComponent.enter);
