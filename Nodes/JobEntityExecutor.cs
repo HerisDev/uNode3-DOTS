@@ -168,7 +168,7 @@ namespace MaxyGames.UNode.Editors {
 				}
 				element.clickable.clickedWithEventInfo += (evt) => {
 					if(node.ReferenceNode != null) {
-						uNodeEditor.HighlightNode(node.ReferenceNode);
+						uNodeEditor.Highlight(node.ReferenceNode);
 					}
 					else {
 						if(nodeObject.parent != null) {

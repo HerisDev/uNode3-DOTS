@@ -22,7 +22,7 @@ namespace MaxyGames.UNode.Editors {
 				mousePosition, 
 				type => {
 					void DoAction(Type type) {
-						var variable = graph.GraphData.variableContainer.NewVariable("newVariable", type);
+						var variable = graph.GraphData.variableContainer.AddVariable("newVariable", type);
 						variable.modifier.ReadOnly = true;
 						GraphChanged();
 					}

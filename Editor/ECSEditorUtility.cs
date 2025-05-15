@@ -14,10 +14,10 @@ namespace MaxyGames.UNode.Editors {
 				authoringGraph.inheritType = typeof(MonoBehaviour);
 				foreach(var variable in component.GetAllVariables()) {
 					if(variable.type == typeof(Entity)) {
-						authoringGraph.GraphData.variableContainer.NewVariable(variable.name, typeof(GameObject));
+						authoringGraph.GraphData.variableContainer.AddVariable(variable.name, typeof(GameObject));
 					}
 					else if(variable.type.IsValueType) {
-						authoringGraph.GraphData.variableContainer.NewVariable(variable.name, variable.type);
+						authoringGraph.GraphData.variableContainer.AddVariable(variable.name, variable.type);
 					}
 				}
 			}
