@@ -111,7 +111,7 @@ namespace MaxyGames.UNode {
 					new CG.MPData(parameterName, typeof(SystemState), RefKind.Ref)
 					}
 				).SetToPublic();
-				if(GraphData.mainGraphContainer.Any(element => element is NodeObject node && (node.node is Nodes.OnSystemStartRunning || node.node is Nodes.OnSystemStopRunning))) {
+				if(GraphData.mainGraphContainer.GetObjectsInChildren().Any(element => element is NodeObject node && (node.node is Nodes.OnSystemStartRunning || node.node is Nodes.OnSystemStopRunning))) {
 					CG.RegisterPostGeneration(classData => {
 						classData.implementedInterfaces.Add(typeof(ISystemStartStop));
 					});
@@ -153,7 +153,7 @@ namespace MaxyGames.UNode {
 				onDestroy.modifier = new FunctionModifier();
 				onDestroy.modifier.SetProtected();
 				onDestroy.modifier.SetOverride();
-				if(GraphData.mainGraphContainer.Any(element => element is NodeObject node && node.node is Nodes.OnSystemStartRunning)) {
+				if(GraphData.mainGraphContainer.GetObjectsInChildren().Any(element => element is NodeObject node && node.node is Nodes.OnSystemStartRunning)) {
 					var mData = CG.generatorData.AddMethod(
 						nameof(ISystemStartStop.OnStartRunning),
 						typeof(void)
@@ -162,7 +162,7 @@ namespace MaxyGames.UNode {
 					mData.modifier.SetProtected();
 					mData.modifier.SetOverride();
 				}
-				if(GraphData.mainGraphContainer.Any(element => element is NodeObject node && node.node is Nodes.OnSystemStopRunning)) {
+				if(GraphData.mainGraphContainer.GetObjectsInChildren().Any(element => element is NodeObject node && node.node is Nodes.OnSystemStopRunning)) {
 					var mData = CG.generatorData.AddMethod(
 						nameof(ISystemStartStop.OnStopRunning),
 						typeof(void)
