@@ -23,7 +23,7 @@ Alternatively, open Packages/manifest.json and add the following to the dependen
 ```json
 {
     "dependencies": {
-        "com.maxygames.unode": "https://github.com/wahidrachmawan/uNode3-DOTS.git"
+        "com.maxygames.unode-dots": "https://github.com/wahidrachmawan/uNode3-DOTS.git"
     }
 }
 ```
