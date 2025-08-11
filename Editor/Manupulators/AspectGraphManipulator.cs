@@ -68,7 +68,7 @@ namespace MaxyGames.UNode.Editors {
 			return true;
 		}
 
-		public override IEnumerable<DropdownMenuItem> ContextMenuForVariable(Vector2 mousePosition, Variable variable) {
+		public override IEnumerable<ContextMenuItem> ContextMenuForVariable(Vector2 mousePosition, Variable variable) {
 			var type = variable.type;
 			if(type.IsSubclassOfRawGeneric(typeof(RefRO<>)) || 
 				type.IsSubclassOfRawGeneric(typeof(RefRW<>)) || 
@@ -76,7 +76,7 @@ namespace MaxyGames.UNode.Editors {
 				type.IsSubclassOfRawGeneric(typeof(EnabledRefRW<>))) 
 			{
 				var elementType = type.GetGenericArguments()[0];
-				return new[] {
+				return new ContextMenuItem[] {
 					new DropdownMenuAction("Generate accessor properties (DOTS)", evt => {
 						var items = ItemSelector.MakeCustomItems(elementType, new FilterAttribute() { ValidMemberType = MemberTypes.Field, ValidNextMemberTypes = 0 });
 						ItemSelector.ShowCustomItem(items, member => {
@@ -99,7 +99,7 @@ namespace MaxyGames.UNode.Editors {
 								});
 							}
 							if(type.IsSubclassOfRawGeneric(typeof(RefRW<>)) || type.IsSubclassOfRawGeneric(typeof(EnabledRefRW<>))) {
-								prop.CreateSeter();
+								prop.CreateSetter();
 								var func = prop.setRoot;
 								NodeEditorUtility.AddNewNode(func, new Vector2(0, 100), (NodeSetValue set) => {
 									set.enter.ConnectTo(func.Entry.exit);

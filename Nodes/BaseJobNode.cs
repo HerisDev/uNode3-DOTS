@@ -19,7 +19,7 @@ namespace MaxyGames.UNode.Nodes {
 		}
 		public List<VData> variableDatas = new List<VData>();
 
-		public IEnumerable<NodeObject> nestedFlowNodes {
+		public IEnumerable<NodeObject> NestedFlowNodes {
 			get {
 				yield return Entry;
 			}
@@ -27,13 +27,13 @@ namespace MaxyGames.UNode.Nodes {
 
 		[SerializeField]
 		protected NodeObject entryObject;
-		public NestedEntryNode Entry {
+		public BaseEntryNode Entry {
 			get {
 				if(this == null) return null;
 				if(entryObject == null || entryObject.node is not NestedEntryNode) {
 					nodeObject.AddChild(entryObject = new NodeObject(new NestedEntryNode()));
 				}
-				return entryObject.node as NestedEntryNode;
+				return entryObject.node as BaseEntryNode;
 			}
 		}
 

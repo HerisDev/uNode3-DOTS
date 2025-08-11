@@ -18,7 +18,7 @@ namespace MaxyGames.UNode.Nodes {
 			entity = ValueInput(nameof(entity), typeof(Entity));
 		}
 
-		public override Type ReturnType() => componentType;
+		protected override Type ReturnType() => componentType;
 
 		public override string GetRichTitle() {
 			return $"Get Component: {componentType.GetRichName()}";

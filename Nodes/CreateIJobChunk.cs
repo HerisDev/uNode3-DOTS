@@ -37,7 +37,7 @@ namespace MaxyGames.UNode.Nodes {
 			//Ensure this node is registered
 			this.EnsureRegistered();
 			//Manual register the entry node.
-			CG.RegisterEntry(entryObject);
+			CG.RegisterDependency(entryObject);
 			//Initialize the class name
 			CG.RegisterUserObject(CG.GenerateNewName(name), this);
 		}
@@ -95,7 +95,7 @@ namespace MaxyGames.UNode.Nodes {
 				};
 				method.parameters = parameters;
 				//Generate code for execute logic
-				method.code = CG.GeneratePort(Entry.output);
+				method.code = CG.GeneratePort(Entry.nodeObject.primaryFlowOutput);
 
 				//Register the generated function code
 				classBuilder.RegisterFunction(method.GenerateCode());
@@ -168,8 +168,8 @@ namespace MaxyGames.UNode.Editors {
 
 	[NodeCustomEditor(typeof(Nodes.CreateIJobChunk))]
 	class CreateIJobChunkView : BaseNodeView {
-		protected override void InitializeView() {
-			base.InitializeView();
+		protected override void OnReloadView() {
+			base.OnReloadView();
 			var node = targetNode;
 			{
 				var element = new Button();

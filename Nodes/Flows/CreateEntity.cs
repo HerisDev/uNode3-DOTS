@@ -14,7 +14,7 @@ namespace MaxyGames.UNode.Nodes {
 			base.OnRegister();
 		}
 
-		public override Type ReturnType() => typeof(Entity);
+		protected override Type ReturnType() => typeof(Entity);
 
 		public override void OnGeneratorInitialize() {
 			base.OnGeneratorInitialize();

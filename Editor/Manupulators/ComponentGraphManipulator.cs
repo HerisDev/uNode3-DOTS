@@ -16,9 +16,10 @@ namespace MaxyGames.UNode.Editors {
 		public override bool IsValid(string action) {
 			return graph is ClassScript && graph.HasImplementInterface(typeof(IComponentData));
 		}
-		public override IEnumerable<DropdownMenuItem> ContextMenuForGraph(Vector2 mousePosition) {
+
+		public override IEnumerable<ContextMenuItem> ContextMenuForGraph(Vector2 mousePosition) {
 			var componentGraph = graph as ClassScript;
-			return new[] {
+			return new ContextMenuItem[] {
 				new DropdownMenuAction("Generate Baker and Authoring component", evt => {
 					var path = AssetDatabase.GetAssetPath(componentGraph);
 					var dir = System.IO.Path.GetDirectoryName(path);

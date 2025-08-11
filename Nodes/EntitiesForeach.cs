@@ -244,7 +244,7 @@ namespace MaxyGames.UNode.Nodes {
 							var vName = member.target.startName;
 							localVariables.Add(new ECSJobVariable() {
 								name = vName,
-								type = mNode.ReturnType(),
+								type = mNode.nodeObject.ReturnType(),
 								value = () => CG.GeneratePort(mNode.output),
 								owner = mNode.output,
 							});
@@ -260,7 +260,7 @@ namespace MaxyGames.UNode.Nodes {
 								var vName = CG.GenerateNewName(mNode.name);
 								localVariables.Add(new ECSJobVariable() {
 									name = vName,
-									type = mNode.ReturnType(),
+									type = mNode.nodeObject.ReturnType(),
 									value = () => CG.GeneratePort(mNode.output),
 									owner = mNode.output,
 								});
